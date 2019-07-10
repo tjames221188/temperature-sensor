@@ -1,0 +1,14 @@
+[Unit]
+Description=Temperature and humidity sensor
+After=network.target
+
+[Service]
+ExecStart=/home/pi/go/src/github.com/tjames221188/temperature-sensor/temperature-sensor
+WorkingDirectory=/home/pi
+StandardOutput=inherit
+StandardError=inherit
+Restart=always
+User=root
+
+[Install]
+WantedBy=multi-user.target
