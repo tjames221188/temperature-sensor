@@ -31,17 +31,17 @@ func main() {
 	app := cli.NewApp()
 	app.Name = "Temperature Sensor"
 	app.Usage = "Foo"
-	app.Flags = []cli.Flag {
+	app.Flags = []cli.Flag{
 		cli.StringFlag{
-			Name: "metrics-gateway, g",
-			Value: "metrics.englishlanguageitutoring.com",
-			Usage: "The prometheus pushgateway host",
+			Name:        "metrics-gateway, g",
+			Value:       "metrics.englishlanguageitutoring.com",
+			Usage:       "The prometheus pushgateway host",
 			Destination: &gateway_host,
 		},
 		cli.StringFlag{
-			Name: "metrics-gateway-port, p",
-			Value: "9091",
-			Usage: "The prometheus pushgateway port",
+			Name:        "metrics-gateway-port, p",
+			Value:       "9091",
+			Usage:       "The prometheus pushgateway port",
 			Destination: &gateway_port,
 		},
 	}
@@ -59,7 +59,7 @@ func main() {
 			Name: "office_humidity_percent",
 		})
 
-		pusher := push.New(gateway_host + ":" + gateway_port, "office_monitor").
+		pusher := push.New(gateway_host+":"+gateway_port, "office_monitor").
 			Collector(temperatureCollector).
 			Collector(humidityCollector)
 
