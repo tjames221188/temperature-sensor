@@ -67,6 +67,7 @@ func main() {
 			temperature, humidity, retried, err := dht.ReadDHTxxWithRetry(sensorType, pin, false, 10)
 			if err != nil {
 				log.Println(err)
+				continue
 			}
 			fmt.Printf("Temp: %.2f, Humidity: %.2f (retried %d times)", temperature, humidity, retried)
 			temperatureCollector.Set(float64(temperature))
